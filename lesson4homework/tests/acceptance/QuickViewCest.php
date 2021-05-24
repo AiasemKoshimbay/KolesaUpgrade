@@ -2,7 +2,9 @@
 
 class QuickViewCest
 {
-   
+    /**
+     * проверка открытия карточки Blouse
+     */
     public function checkCardByQuickView(AcceptanceTester $I)
     {
         $I->maximizeWindow();
