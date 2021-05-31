@@ -2,6 +2,7 @@
 
 use Page\Acceptance\CategoryPage;
 use Page\Acceptance\SearchPage;
+use Page\Acceptance\UpdatePage;
 
 /**
  * Класс для поиска карточек и смены раскладки при поиске
@@ -14,10 +15,10 @@ class SearchCest
     public function checkLayoutCardsBySearch(AcceptanceTester $I)
     {
         $searchPage = new SearchPage($I);
-        $categoryPage = new CategoryPage($I);
+        $updatePage = new UpdatePage($I);
         $I -> amOnPage(SearchPage::$URL);
         $searchPage -> clickCatolog();
-        $categoryPage -> checkGridElements()
+        $updatePage -> checkGridElements()
                       -> clickListButton()
                       -> checkListLayout();
 
