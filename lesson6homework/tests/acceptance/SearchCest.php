@@ -1,6 +1,5 @@
 <?php
 
-use Page\Acceptance\CategoryPage;
 use Page\Acceptance\SearchPage;
 use Page\Acceptance\UpdatePage;
 
