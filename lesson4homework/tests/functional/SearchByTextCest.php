@@ -8,10 +8,14 @@ class SearchByTextCest
      */
     public function checkSearchCardByText(FunctionalTester $I)
     {
+       $searchCSS = '#search_query_top';
+       $searchButtonXpath = '//*[@id="searchbox"]/button';
+       $cardCSS = '.product-container';
+
        $I ->amOnPage('');
        $I ->seeElement('#search_query_top');
        $I ->fillField('#search_query_top','Printed dress');
-       $I ->click('#searchbox > button');
+       $I ->click('//*[@id="searchbox"]/button');
        $I ->seeNumberOfElements('.product-container',5);
 
     }
