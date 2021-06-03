@@ -36,7 +36,7 @@ class ChooseCategoryCest
         $I ->amOnPage('');
         $I ->waitForElementVisible(MainPage::$navbarLinks);
         $I ->click(sprintf(MainPage::$categoryLink,$data['childNum']));
-        $I ->see($data['header']);
+        $I ->waitForText($data['header']);
         $I ->seeInCurrentUrl($data['url']);
         
     }
