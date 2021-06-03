@@ -15,6 +15,7 @@ class ChooseCategoryCest
      */
     protected  $randomness = 
     [
+        ['childNum' => '1', 'header' => 'Все потоки','url' =>'top/'],
         ['childNum' => '2', 'header' => 'Разработка', 'url' =>'flows/develop/'],
         ['childNum' => '3', 'header' => 'Администрирование', 'url' =>'flows/admin/'],
         ['childNum' => '4', 'header' => 'Дизайн', 'url' =>'flows/design/'],
@@ -35,7 +36,7 @@ class ChooseCategoryCest
         $I ->amOnPage('');
         $I ->waitForElementVisible(MainPage::$navbarLinks);
         $I ->click(sprintf(MainPage::$categoryLink,$data['childNum']));
-        $I ->seeInTitle($data['header']);
+        $I ->see($data['header']);
         $I ->seeInCurrentUrl($data['url']);
         
     }
