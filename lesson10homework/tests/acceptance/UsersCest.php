@@ -7,9 +7,9 @@ use Page\Acceptance\ContentPage;
  */
 class UsersCest
 {
-    public const NUMBERSOFUSERS = 10;
+    public const NUMBERSOFUSERS = 3;
 
-    public const OWNER = 'Aiasem_k';
+    public const OWNER = '';
     /**
      * проверка создания юзера в базе
      */
@@ -45,19 +45,7 @@ class UsersCest
             $I->waitForElementVisible(ContentPage::$blockCard);
             $I->see($user['name']);
         }
-        $I ->amOnPage(sprintf('/?owner=%s',$this->userData['owner']));
-        $I->waitForElementVisible(ContentPage::$blockCard);
-        $I->seeNumberOfElements(ContentPage::$blockCard, self::NUMBERSOFUSERS);
-        $I->click(ContentPage::$snap);
-        $count = $I->grabCollectionCount('people', ['owner' => $this->userData['owner'],'canbeKilledBySnap'=> true]);
-        while ($count <= 0) {
-            $user = $I->grabFromCollection('people', ['owner' => $this->userData['owner'],'canbeKilledBySnap'=> true]);
-            $I ->sendDelete(sprintf('/human?_id=%s',$user['_id']),$this->userData);
-            $count --;
-        }
-        $I->dontSeeInCollection('people', ['owner' => $this->userData['owner'],'canbeKilledBySnap'=> true]);
-        $user = $I->grabCollectionCount('people', array('canBeKilledBySnap' => true,'owner' => $this ->userData['owner']));
-        $I->seeNumberOfElements(ContentPage::$blockCard, $user);
+       
     }
     /**
      * Проверяет удаления юзера с базы данных
@@ -82,7 +70,7 @@ class UsersCest
         $I->dontSeeInCollection('people', ['owner' => $this->userData['owner'],'canbeKilledBySnap'=> true]);
 
         $user = $I->grabCollectionCount('people', array('canBeKilledBySnap' => true,'owner' => $this ->userData['owner']));
-        
+
         $I->seeNumberOfElements(ContentPage::$blockCard, $user);
     }
 
